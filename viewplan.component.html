@@ -1,0 +1,32 @@
+<p>view-plan works!</p>
+<form>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Select Asset Id</label>
+            <!-- <input type="text" class="form-control" id="name" name="planId" #planId> -->
+            <select class="form-control" id="name" name="planId" #planId (change)='onOptionsSelected(planId.value)'>
+                <option value="" disabled="disabled" selected>Select a Plan</option>
+                <option *ngFor="let plan of plans" value="{{plan}}">{{plan}}</option>
+            </select>
+        </div>
+    </div>
+    <!-- <button (click)=getAsset(planId.value)>Get Details</button> -->
+</form>
+
+
+<tabel *ngIf="planDetails != ''">
+    <tr>
+        <th>Plan Value</th>
+        <th>GB/Day</th>
+        <th>UnLimited Calls</th>
+        <th>Add-Ons</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+        <td>{{planDetails.planValue}}</td>
+        <td>{{planDetails.data}}</td>
+        <td>{{planDetails.unLimitedCalls}}</td>
+        <td>{{planDetails.addOns}}</td>
+        <td>{{planDetails.planType}} <a (click)="deletePlan(planDetails.planId)">Delete</a></td>
+    </tr>
+</tabel>
